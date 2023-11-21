@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
-
 
 struct WeatherData: Decodable {
 
@@ -196,7 +194,57 @@ struct dataWeather: Identifiable {
        let id = UUID()
        var time: String
        var temperatura: Double
-       var weatherCode: Double
+       var weatherCode: String
+    var precipitationProb: Int
+    
+    init(){
+        self.time = ""
+        self.temperatura = 0.0
+        self.weatherCode = "0"
+        self.precipitationProb = 0
+    }
+    
+    init(time: String, temperatura: Double, weatherCode: String, precipitation: Int) {
+            self.time = time
+            self.temperatura = temperatura
+            self.weatherCode = weatherCode
+        self.precipitationProb = precipitation
+        }
         
+    
 }
 
+ 
+
+func getWeatherCodeDescription(code: Double) -> String {
+    switch code {
+    case 0:
+        return "sun.max"
+    case 1, 2, 3:
+        return "cloud.sun"
+    case 4, 5:
+        return "cloud.drizzle"
+    case 51, 53, 55:
+        return "cloud.rain"
+    case 56, 57:
+        return "cloud.sleet"
+    case 61, 63, 65:
+        return "cloud.snow"
+    case 66, 67:
+        return "cloud.sleet"
+    case 71, 73, 75:
+        return "cloud.snow"
+    case 77:
+        return "cloud.snow"
+    case 80, 81, 82:
+        return "cloud.drizzle"
+    case 85, 86:
+        return "snowflake"
+    case 95:
+        return "cloud.bolt.rain"
+    case 96, 99:
+        return "cloud.sleet"
+    default:
+        return "unknow"
+    }
+}
