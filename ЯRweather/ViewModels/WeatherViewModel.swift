@@ -13,8 +13,8 @@ import Network
 class WeatherViewModel: ObservableObject {
     var weatherData: WeatherData
     @Published var citta: String
-    //to contain values of the single hour
-     @Published var datiGiorno: dailyDataValues
+ 
+    @Published var datiGiorno: dailyDataValues
     
     @Published var currentWeather: dataWeather
     
@@ -31,8 +31,6 @@ class WeatherViewModel: ObservableObject {
         let latitude = lat
         let longitude = long
        
-        
-        
         guard let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=\(latitude)&longitude=\(longitude)&hourly=temperature_2m,precipitation_probability,weather_code&daily=weather_code&timezone=Europe%2FBerlin")
         else {
             print("Errore call api")
@@ -46,8 +44,7 @@ class WeatherViewModel: ObservableObject {
             }
             
             do {
-                print("Decoding Data from json")
-                
+ 
                 let weatData = try JSONDecoder().decode(WeatherData.self, from: data)
                  DispatchQueue.main.async {
                      
@@ -68,8 +65,7 @@ class WeatherViewModel: ObservableObject {
 
     func StructBuilder(weatherData: WeatherData){
         var data: dailyDataValues = dailyDataValues()
-        let time = weatherData.hourly?.time?[0] ?? "t"
-        print(weatherData)
+        _ = weatherData.hourly?.time?[0] ?? "t"
         var currentTime: String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
@@ -98,8 +94,7 @@ class WeatherViewModel: ObservableObject {
                     
                     let weather = dataWeather(time: time, temperatura: temperatura, weatherCode: code, precipitation: prec)
                     data.datiTempo.append(weather)
-                    // print("WeatherViewModel: ")
-                    // print(weather)
+                   
                     
                     
                     
@@ -107,8 +102,7 @@ class WeatherViewModel: ObservableObject {
                     print(currentTime.prefix(13))
                     if(time.prefix(13) == currentTime.prefix(13) ) {
                         self.currentWeather = weather
-                        print("CURRENT WEATHER:")
-                        print(weather)
+                       
                     }
                 }
     
