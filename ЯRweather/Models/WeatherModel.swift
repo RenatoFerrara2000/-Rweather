@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Json complete struct
 struct WeatherData: Decodable {
 
   var latitude             : Double?      = nil
@@ -51,15 +52,20 @@ struct WeatherData: Decodable {
     hourly               = try values.decodeIfPresent(Hourly.self      , forKey: .hourly               )
     dailyUnits           = try values.decodeIfPresent(DailyUnits.self  , forKey: .dailyUnits           )
     daily                = try values.decodeIfPresent(Daily.self       , forKey: .daily                )
+<<<<<<< Updated upstream
  
   }
+=======
+    currentWeather       = try values.decodeIfPresent(CurrentWeather.self, forKey: .currentWeather  )
+                                    }
+>>>>>>> Stashed changes
 
   init() {
-
-  }
+    }
 
 }
 
+//informationn on single hours
 struct HourlyUnits: Codable {
 
   var time                     : String? = nil
@@ -217,7 +223,12 @@ struct dataWeather: Identifiable {
 
  
 
+<<<<<<< Updated upstream
 func getWeatherCodeDescription(code: Double) -> String {
+=======
+//function to get  Sf symbol and accessible description from weather code
+func getWeatherCodeDescription(code: Double) -> WeatherCode {
+>>>>>>> Stashed changes
     switch code {
     case 0:
         return "sun.max"
@@ -246,6 +257,38 @@ func getWeatherCodeDescription(code: Double) -> String {
     case 96, 99:
         return "cloud.sleet"
     default:
+<<<<<<< Updated upstream
         return "unknow"
+=======
+        return WeatherCode.init(codeNum: "questionmark", accessibleDesc: "Unknown")
+    }
+}
+
+//weather right now
+struct CurrentWeather: Decodable {
+    let time: String?
+    let interval: Double?
+     let   temperature2M: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case time        = "time"
+        case temperature2M = "temperature_2m"
+        case interval = "interval"
+    }
+    
+    init(from decoder: Decoder) throws {
+      let values = try decoder.container(keyedBy: CodingKeys.self)
+        time  = try values.decodeIfPresent(String.self  , forKey: .time  )
+        temperature2M = try values.decodeIfPresent(Double.self  , forKey: .temperature2M  )
+        interval = try values.decodeIfPresent(Double.self  , forKey: .interval  )
+
+ 
+    }
+    
+    init(){
+        time = ""
+        temperature2M = 0
+        interval = 0
+>>>>>>> Stashed changes
     }
 }

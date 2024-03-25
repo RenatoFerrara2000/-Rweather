@@ -13,12 +13,16 @@ struct WeatherView: View {
     @State var currentWeather: dataWeather = dataWeather()
     @State var tempNow: String = ""
     @State var dataFetched: Bool = false
+<<<<<<< Updated upstream
     
+=======
+    @State var location = CLLocationCoordinate2D() 
+         
+>>>>>>> Stashed changes
     
     @StateObject var locationManager = LocationManager()
-    
-    
     @StateObject private var viewModel = WeatherViewModel()
+    
     
     var body: some View {
         ZStack{
@@ -27,6 +31,7 @@ struct WeatherView: View {
             
             
             VStack {
+<<<<<<< Updated upstream
                 LocationButton {
                     locationManager.requestLocation()
                     fetchWeatherData()
@@ -36,6 +41,8 @@ struct WeatherView: View {
                 .frame(height: 44).shadow(color: .white, radius: 4)
                 .padding()
                 
+=======
+>>>>>>> Stashed changes
                 if(dataFetched){
                     VStack{
                         
@@ -78,6 +85,7 @@ struct WeatherView: View {
                         
                     }
                 }
+<<<<<<< Updated upstream
             }
         }
     }
@@ -98,6 +106,27 @@ struct WeatherView: View {
             viewModel.fetch(lat: location.latitude, long: location.longitude)
             
             locationManager.getLocationCity(lat: locationManager.location!.latitude, long: locationManager.location!.longitude) { cityName in
+=======
+            }.onAppear(){
+                
+                locationManager.manager.requestWhenInUseAuthorization()
+                locationManager.manager.startUpdatingLocation()
+                Task{
+                    //start a thread to get the data, off the main thread
+                    await fetchWeatherData()
+                }
+            }
+        }
+    }
+    //api manager singleton
+    
+    func fetchWeatherData() async {
+        self.location = locationManager.location
+        await viewModel.fetch(lat: location.latitude, long: location.longitude)
+    
+        
+        locationManager.getLocationCity(lat: locationManager.location.latitude, long: locationManager.location.longitude) { cityName in
+>>>>>>> Stashed changes
                 self.city = cityName
                 print("City name:", cityName)
             }

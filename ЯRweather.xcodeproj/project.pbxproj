@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		527AAC9A2BB1D34A00E75175 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527AAC992BB1D34A00E75175 /* Singleton.swift */; };
+		527AAC9C2BB1D42B00E75175 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527AAC9B2BB1D42B00E75175 /* ApiManager.swift */; };
 		527C94F42B03B92E00E593BD /* _RweatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C94F32B03B92E00E593BD /* _RweatherApp.swift */; };
 		527C94F62B03B92E00E593BD /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527C94F52B03B92E00E593BD /* WeatherView.swift */; };
 		527C94F82B03B92F00E593BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527C94F72B03B92F00E593BD /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		527AAC992BB1D34A00E75175 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		527AAC9B2BB1D42B00E75175 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		527C94F02B03B92E00E593BD /* ЯRweather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ЯRweather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527C94F32B03B92E00E593BD /* _RweatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _RweatherApp.swift; sourceTree = "<group>"; };
 		527C94F52B03B92E00E593BD /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -63,7 +67,9 @@
 				527C95022B03B96100E593BD /* View */,
 				527C94F72B03B92F00E593BD /* Assets.xcassets */,
 				527C94F92B03B92F00E593BD /* Preview Content */,
+				527AAC992BB1D34A00E75175 /* Singleton.swift */,
 				527C95092B065A7400E593BD /* LocationManager.swift */,
+				527AAC9B2BB1D42B00E75175 /* ApiManager.swift */,
 			);
 			path = "ЯRweather";
 			sourceTree = "<group>";
@@ -171,7 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				527C94F62B03B92E00E593BD /* WeatherView.swift in Sources */,
+				527AAC9A2BB1D34A00E75175 /* Singleton.swift in Sources */,
 				527C95082B03CC9900E593BD /* WeatherViewModel.swift in Sources */,
+				527AAC9C2BB1D42B00E75175 /* ApiManager.swift in Sources */,
 				527C950A2B065A7400E593BD /* LocationManager.swift in Sources */,
 				527C95062B03BC8C00E593BD /* WeatherModel.swift in Sources */,
 				527C94F42B03B92E00E593BD /* _RweatherApp.swift in Sources */,
